@@ -1,0 +1,37 @@
+--Create a clothing store database
+
+CREATE TABLE clothing (id integer primary key, item text, sold_items integer, section text, price integer);
+
+INSERT INTO clothing VALUES  (1, "skirts", 5, "apparel", 20);
+INSERT INTO clothing VALUES (2, "shirts", 6, "apparel", 35);
+INSERT INTO clothing VALUES (3, "business shoes", 2, "shoes", 70);
+INSERT INTO clothing VALUES (4, "rain jackets", 3, "apparel", 30);
+INSERT INTO clothing VALUES (5, "fashion jackets", 6, "apparel",150);
+INSERT INTO clothing VALUES (6, "casual shoes", 4, "shoes", 35);
+INSERT INTO clothing VALUES (7, "hats", 15, "accessories", 25);
+INSERT INTO clothing VALUES (8, "wallets", 3, "accessories", 45);
+INSERT INTO clothing VALUES (9, "socks", 30, "accessories", 10);
+INSERT INTO clothing VALUES (10, "summer dresses", 18, "apparel", 30);
+INSERT INTO clothing VALUES (11, "business dresses", 9, "apparel", 40);
+INSERT INTO clothing VALUES (12, "slippers", 5, "shoes", 20);
+INSERT INTO clothing VALUES (13, "handbags", 2, "accessories", 55);
+INSERT INTO clothing VALUES (14, "backpacks", 4, "accessories", 80);
+INSERT INTO clothing VALUES (15, "tops", 7, "apparel", 15);
+
+
+
+--display the database ordered by price. 
+SELECT * FROM clothing
+ORDER BY price desc; 
+
+
+--what is the avg price of items in the apparel section? 
+SELECT AVG(price) "avg apparel item price"
+FROM clothing
+where section='apparel'; 
+
+--what are the most 5 sold items? 
+SELECT item, price, sold_items
+FROM clothing
+order by sold_items desc
+limit 5; 
