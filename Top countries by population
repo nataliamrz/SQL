@@ -1,0 +1,39 @@
+#In this SQL code, I'm querying a database that's holding data about Top countries by population to answer questions. 
+#Data source https://gist.github.com/pamelafox/ad4f6abbaac0a48aa781
+
+#1. Finding name of the countries with min and max population
+
+select name, population 
+from countries 
+where population = (select max(population) from countries);
+
+select name, population 
+from countries 
+where population = (select min(population) from countries);
+
+
+#2. The most frequent median age based on number of countries
+
+select median_age, count(*)  as number_of_countries
+from countries
+group by median_age
+having count(*) >= 10;
+
+
+#3. Group countries whether they have above average population, below or equal
+
+select name, population, 
+case when
+population > (select avg(population) from countries) then 'above average'
+when
+population < (select avg(population) from countries) then 'below average'
+else 
+'equals to average'
+end as category
+from countries;
+
+4. Get name of the countries whose median age is >= 40 and fertility rate >= 2.0
+
+select name
+from countries
+where median_age >=40 and fertility_rate >=2.0;
